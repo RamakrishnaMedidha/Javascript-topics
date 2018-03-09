@@ -1,0 +1,48 @@
+<!-- 
+A Promise object represents a value that may not be available yet, but will be resolved at some point in the future. It allows you to write asynchronous code in a more synchronous fashion.
+-->
+
+<html>
+<head>
+</head>
+<body>
+hello
+<script>
+function asyncFunction(){
+return  promise=new Promise(function(resolve,reject){
+	var xhr=new XMLHttpRequest();
+	xhr.open('GET','https://reqres.in/api/users?page=2');
+	xhr.onload=function(){
+		if(xhr.status>=200 && xhr.status<300){
+		resolve(xhr.response);
+		}else{
+		reject(new Error(xhr.response));
+		}
+		
+	}
+	xhr.onError=function(){
+		reject(new Error("error while fetching the data"))
+	}
+	xhr.send();
+});
+}
+
+asyncFunction().
+then(function(data){
+console.log("promise fullfilled");
+console.log(data);
+},function(err){
+console.log("promise rejected")
+});
+
+asyncFunction().
+then(function(data){
+console.log("promise fullfilled 222222");
+console.log(data);
+},function(err){
+console.log("promise rejected")
+});
+
+</script>
+</body>
+</html>
