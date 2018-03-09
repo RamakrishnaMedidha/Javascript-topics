@@ -1,0 +1,57 @@
+//prototype inheritance in javascript
+
+/*person constructor function is common for all the users so we can inherit properties and methods of it*/
+function person(firstName,lastName,age){
+	this.name={
+	firstName,lastName
+	};
+	this.age=age;
+	this.hello=function(){
+		alert('Hello Iam person Own method');		
+	}
+	}
+	
+	person.prototype.greeting=function(){
+		alert("hello "+this.name);
+	}
+	
+	
+function teacher(firstName,lastName,age,subject){
+/*person condstructor function called with the parameters by setting the this context to teacher
+so here only properties and methods which are there in the constructor function will be inherited to the teacher ,but
+properties or methods which are there on person.prototype will not be inherited to do so 
+teacher.prototype has to set with the person prototype
+after the above statement the teacher.prototype.constructor will point to the person ,so it has to changed to teacher
+
+
+*/
+person.call(this,firstName,lastName,age);
+this.subject=subject;
+}	
+
+teacher.prototype=Object.create(person.prototype);
+teacher.prototype.constructor=teacher;
+
+//new keyword must other wise this context will be "window"
+var mathTeacher=new teacher('surender','reddy',34,'Mathematics');
+
+/*
+event life cycle:
+The event flow model specified by DOM Level 2 Events has three phases to it:
+
+1.Event Capturing Phase(elem.addEventListener("click", e => alert(`Capturing: ${elem.tagName}`), true);)
+2.At the target
+Event Bubbling Phase.
+First occurs Event Capturing, provided there exists an opportunity to intercept the event.
+
+Then the actual target gets the event
+
+Then it get to the final phase of bubbling, which allows a final response to the event.
+
+Referring to the previous example, clicking the <div> element fires the event in the order as specified by the diagram above.
+
+http://www.tutorialspark.com/javascript/JavaScript_Event_Flow.php
+https://javascript.info/bubbling-and-capturing
+for ES6 & ES7
+https://blog.mindorks.com/most-used-javascript-ecmascript-2015-es6-and-ecmascript-2016-es7-features-75682cd98596 
+*/
