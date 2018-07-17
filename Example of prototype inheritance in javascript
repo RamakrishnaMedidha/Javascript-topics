@@ -57,3 +57,17 @@ https://blog.mindorks.com/most-used-javascript-ecmascript-2015-es6-and-ecmascrip
 */
 For Single page application using venila Javascript
 https://www.sitepoint.com/single-page-app-without-framework/
+
+
+
+
+
+#arrow function
+  this.readdataservice.getPost().subscribe(posts=>this.posts=posts);
+#anonymous  function with this binbding
+  this.readdataservice.getPost().subscribe(
+        function (posts) {
+            this.posts = posts;
+        }.bind(this)
+
+    );
