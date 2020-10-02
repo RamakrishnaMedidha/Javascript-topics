@@ -106,6 +106,6 @@ A
 
 
 
-##footer
+## footer
 
 [goto heading3](#heading3)
