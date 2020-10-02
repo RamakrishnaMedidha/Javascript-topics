@@ -6,7 +6,7 @@
 - list
 * list
 * list
-[hello](#heading1)
+[goto footer](#footer)
 
 
 
@@ -106,6 +106,6 @@ A
 
 
 
+##footer
 
-
-[hello](#heading3)
+[goto heading3](#heading3)
